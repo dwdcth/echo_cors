@@ -1,4 +1,4 @@
-package echo_cors_mw
+package echo_cors
 
 import (
 	"net/http"
@@ -47,6 +47,7 @@ type (
 		MaxAge         int `json:"max_age"`
 		AllowSubDomain bool
 		MainDomain     string
+		AllowAllHost   bool
 	}
 )
 
@@ -106,6 +107,9 @@ func CORSWithConfig(config CORSConfig) echo.MiddlewareFunc {
 				if strings.Contains(origin, config.MainDomain) {
 					allowOrigin = origin
 				}
+			}
+			if config.AllowAllHost {
+				allowOrigin = c.Scheme()+"://"+req.Host
 			}
 			// Simple request
 			if req.Method != echo.OPTIONS {
