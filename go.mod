@@ -1,3 +1,3 @@
 module github.com/dwdcth/echo_cors
 
-go 1.12
+go 1.11
