@@ -2,7 +2,7 @@
 
 ```go get github.com/dwdcth/echo_cors```
 
-```
+```golang
 package main
 
 import (
@@ -34,7 +34,7 @@ becouse cors only allow req below:
 - text/plain
 
 When you use json in ajax,you should change it.If you use axios,you can do:
-```
+```js
 const Axios = axios.create({
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
